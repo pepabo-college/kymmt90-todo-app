@@ -1,0 +1,34 @@
+{
+  "name": "webdb-todo",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify app/assets/javascripts/app.js -t babelify -o app/assets/javascripts/bundle.js -v",
+    "watch": "watchify app/assets/javascripts/app.js -t babelify -o app/assets/javascripts/bundle.js -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.11.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "superagent": "^2.2.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
+}
