@@ -7,23 +7,18 @@ namespace :todo_tasks do
       config.token = ENV['SLACK_TOKEN']
     end
 
-    me = my_info
-    unless me
+    unless (my_info = find_my_info)
       puts 'slack user not found'
       exit
     end
 
-    Slack.chat_postMessage(channel: me['id'], text: "期限すぎてますよ〜 at #{now}\n#{overdue_tasks}")
+    Slack.chat_postMessage(channel: my_info['id'], text: "期限すぎてますよ〜 at #{now}\n#{overdue_tasks}")
   end
 
-  def my_info
-    Slack.im_list['ims'].each do |im|
-      user_info = Slack.users_info(user: im['user'])['user']
-      if user_info['name'] == ENV['SLACK_USER_NAME']
-        return user_info
-      end
+  def find_my_info
+    Slack.users_list['members'].find do |user|
+      user['name'] == ENV['SLACK_USER_NAME']
     end
-    nil
   end
 
   def overdue_tasks
