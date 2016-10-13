@@ -1,24 +1,21 @@
-# README
+# kymmt90-todo-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+タスク管理アプリです。
+登録したタスクの状態はtodo, doing, doneの3つから選ぶことができます。
+期限を過ぎたタスクについては、Slackに通知がいくようになっています。
 
-Things you may want to cover:
+## 機能
 
-* Ruby version
+* 期限切れタスクをSlackに通知
+* ダイジェスト認証あり
 
-* System dependencies
+## 環境変数
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `USER`
+  * Digest認証のユーザー名
+* `PASS`
+  * Digest認証のパスワード
+* `SLACK_TOKEN`
+  * SlackのAPI Token
+* `SLACK_USER_NAME`
+  * Slackで通知したいユーザー名
