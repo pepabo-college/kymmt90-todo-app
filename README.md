@@ -1,5 +1,7 @@
 # kymmt90-todo-app
 
+[![Build Status](https://travis-ci.org/pepabo-college/kymmt90-todo-app.svg?branch=master)](https://travis-ci.org/pepabo-college/kymmt90-todo-app)
+
 タスク管理アプリです。
 登録したタスクの状態はtodo, doing, doneの3つから選ぶことができます。
 期限を過ぎたタスクについては、Slackに通知がいくようになっています。
