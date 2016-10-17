@@ -43,7 +43,7 @@ export default class TaskApp extends React.Component {
       });
   }
 
-  componetDidMount(){
+  componentDidMount(){
     this.loadTaskFromServer();
     setInterval(this.loadTaskFromServer.bind(this),
                 this.props.pollInterval);
