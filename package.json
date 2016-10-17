@@ -23,7 +23,7 @@
     "babel-preset-react": "^6.16.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "superagent": "^2.2.0"
+    "superagent": "^2.3.0"
   },
   "babel": {
     "presets": [
