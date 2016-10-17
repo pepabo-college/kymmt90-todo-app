@@ -78,7 +78,7 @@ export default class TaskApp extends React.Component {
           console.error(this.props.url, status, err.toString());
         } else {
           var tasks = this.state.data;
-          var updated_task_index = tasks.findIndex((t) => t.id == task.task.id);
+          var updated_task_index = tasks.findIndex((t) => t.id === task.task.id);
           tasks[updated_task_index] = res.body;
           this.setState({data: tasks});
         }
