@@ -1,20 +1,6 @@
 import React from "react";
 
 export default class Task extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleUpdate(e) {
-    e.preventDefault();
-    this.props.onTaskUpdate({ task: { id: this.props.id, status: e.target.value } });
-  }
-
-  handleDestroy(e) {
-    e.preventDefault();
-    this.props.onTaskDestroy(this.props.id);
-  }
-
   render() {
     return (
       <tr key={this.props.id}>
@@ -28,10 +14,11 @@ export default class Task extends React.Component {
             <option value="done" key="done">done</option>
           </select>
         </td>
-        <td>
-          <button className="btn btn-danger" onClick={this.handleDestroy.bind(this)}>destroy</button>
-        </td>
       </tr>
     );
   }
+
+  handleUpdate(e){
+    e.preventDefault();
+    this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
 }
