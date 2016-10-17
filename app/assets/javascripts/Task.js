@@ -1,10 +1,6 @@
 import React from "react";
 
-export default class Task extends React.Componet {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Task extends React.Component {
   render() {
     return (
       <tr key={this.props.id}>
@@ -22,7 +18,7 @@ export default class Task extends React.Componet {
     );
   }
 
-  handeleUpdate(e){
+  handleUpdate(e){
     e.preventDefault();
-    this.props.onTaskUpdate({task: this.props.id, status: e.target.value})};
+    this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
 }

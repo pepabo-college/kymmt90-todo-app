@@ -26,7 +26,7 @@ export default class TaskApp extends React.Component {
   }
 
   handleTaskSubmit(task) {
-    var task = this.state.data;
+    var tasks = this.state.data;
     var newTasks = tasks.concat([task]);
     this.setState({data: newTasks});
     request
