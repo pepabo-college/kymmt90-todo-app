@@ -1,9 +1,18 @@
 import React from "react";
 
 export default class Task extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {color: "#f0f0f0"}
+    switch (this.props.status) {
+      case "todo": return this.state.color = "#ff9797"
+      case "doing": return this.state.color = "#f4ff97"
+      case "done": return this.state.color = "#979aff"
+    }
+  }
   render() {
     return (
-      <tr key={this.props.id}>
+      <tr style={{backgroundColor: this.state.color}} key={this.props.id}>
         <td>
           {this.props.content}
         </td>
