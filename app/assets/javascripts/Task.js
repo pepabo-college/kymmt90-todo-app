@@ -1,9 +1,11 @@
 import React from "react";
 
 export default class Task extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {color: "#f0f0f0"}
+  }
+  componentWillReceiveProps(){
     switch (this.props.status) {
       case "todo": return this.state.color = "#ff9797"
       case "doing": return this.state.color = "#f4ff97"
@@ -26,7 +28,6 @@ export default class Task extends React.Component {
       </tr>
     );
   }
-
   handleUpdate(e){
     e.preventDefault();
     this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
