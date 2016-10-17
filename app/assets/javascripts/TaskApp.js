@@ -52,7 +52,7 @@ export default class TaskApp extends React.Component {
   render() {
     return (
       <div className="taskApp">
-        <TaskForm 
+        <TaskForm
         onTaskSubmit={this.handleTaskSubmit.bind(this)} />
         <table className="table table-striped">
           <thead>
@@ -77,9 +77,11 @@ export default class TaskApp extends React.Component {
         if(err || !res.ok){
           console.error(this.props.url, status, err.toString());
         } else {
-          this.setState({data: res.body});
+          var tasks = this.state.data;
+          var updated_task_index = tasks.findIndex((t) => t.id == task.task.id);
+          tasks[updated_task_index] = res.body;
+          this.setState({data: tasks});
         }
       });
   }
 }
-
