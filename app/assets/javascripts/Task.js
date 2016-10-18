@@ -2,9 +2,11 @@ import React from "react";
 import { DragDropContext, DropTarget, DragSource } from "react-dnd";
 
 @DropTarget('item', {
-  hover(hoverProps, monitor, hoverComponent) {
+  drop(dropProps, monitor, dropComponent) {
     let dragProps = monitor.getItem();
-    console.log(hoverProps.id, dragProps.id);
+    if (dropProps.id !== dragProps.id) {
+      dragProps.onDrop(dragProps.id, dropProps.id);
+    }
   },
 }, (connect) => {
   return {
@@ -24,7 +26,7 @@ import { DragDropContext, DropTarget, DragSource } from "react-dnd";
 export default class Task extends React.Component {
   render() {
     return this.props.connectDragSource(this.props.connectDropTarget(
-      <tr key={this.props.id}>
+        <tr key={this.props.id} className="item" data-model_name="Task" data-update_url={"tasks/" + this.props.id + "/sort"}>
         <td>
           {this.props.content}
         </td>
