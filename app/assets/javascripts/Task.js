@@ -29,7 +29,7 @@ var Task = React.createClass({
           {this.props.content}
         </td>
         <td>
-          <select className="form-control" defaultValue={this.props.status} onChange={this.handleUpdate.bind(this)} >
+          <select className="form-control" defaultValue={this.props.status} onChange={this.handleUpdate} >
             <option value="todo" key="todo">todo</option>
             <option value="doing" key="doing">doing</option>
             <option value="done" key="done">done</option>
