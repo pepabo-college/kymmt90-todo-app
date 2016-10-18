@@ -13,6 +13,7 @@ cache: bundler
 
 install:
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $NODE_VERSION
+  - bundle install --deployment --path vendor/bundle
 
 before_script:
   - cp config/database.travis.yml config/database.yml
