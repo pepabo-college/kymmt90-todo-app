@@ -56,3 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slack-api'
 gem 'whenever', require: false
+gem 'ranked-model'
