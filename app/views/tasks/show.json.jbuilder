@@ -1,1 +1,1 @@
-json.extract! @task, :id, :content, :status, :deadline
+json.extract! @task, :id, :content, :status, :deadline, :memo
