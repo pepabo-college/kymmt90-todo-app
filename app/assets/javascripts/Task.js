@@ -1,8 +1,29 @@
 import React from "react";
+import { DragDropContext, DropTarget, DragSource } from "react-dnd";
 
+@DropTarget('item', {
+  hover(hoverProps, monitor, hoverComponent) {
+    let dragProps = monitor.getItem();
+    console.log(hoverProps.id, dragProps.id);
+  },
+}, (connect) => {
+  return {
+    connectDropTarget: connect.dropTarget(),
+  }
+})
+@DragSource('item', {
+  beginDrag(props) {
+    return props
+  }
+}, (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+})
 export default class Task extends React.Component {
   render() {
-    return (
+    return this.props.connectDragSource(this.props.connectDropTarget(
       <tr key={this.props.id}>
         <td>
           {this.props.content}
@@ -15,7 +36,7 @@ export default class Task extends React.Component {
           </select>
         </td>
       </tr>
-    );
+    ));
   }
 
   handleUpdate(e){
