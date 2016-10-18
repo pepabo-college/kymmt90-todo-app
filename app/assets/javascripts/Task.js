@@ -3,14 +3,26 @@ import React from "react";
 export default class Task extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {color: "#f0f0f0"}
-  }
-  componentWillReceiveProps(){
-    switch (this.props.status) {
-      case "todo": return this.state.color = "#ff9797"
-      case "doing": return this.state.color = "#f4ff97"
-      case "done": return this.state.color = "#979aff"
+    this.state = {};
+  };
+  changeColor(setProps){
+    switch (setProps.status) {
+    case "todo":
+      this.setState({ color: "#ff9797" });
+      break;
+    case "doing":
+      this.setState({ color: "#f4ff97" });
+      break;
+    case "done":
+      this.setState({ color: "#979aff" })
+      break;
     }
+  };
+  componentWillMount(){
+    this.changeColor(this.props);
+  }
+  componentWillReceiveProps(nextProps){
+    this.changeColor(nextProps);
   }
   render() {
     return (
