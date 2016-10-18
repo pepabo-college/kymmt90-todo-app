@@ -15,6 +15,7 @@ export default class TaskForm extends React.Component {
     }
     this.props.onTaskSubmit({content: content, status: 'todo'});
     ReactDOM.findDOMNode(this.refs.content).value = '';
+    this.setState({ activateSubmit: false });
     return;
   }
 
