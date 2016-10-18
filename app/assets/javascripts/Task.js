@@ -1,29 +1,27 @@
 import React from "react";
 
-export default class Task extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  };
-  changeColor(setProps){
+var Task = React.createClass({
+  getInitialState() {
+    return this.getColor(this.props);
+  },
+
+  getColor(setProps){
     switch (setProps.status) {
     case "todo":
-      this.setState({ color: "#ff9797" });
-      break;
+      return { color: "#ff9797" };
     case "doing":
-      this.setState({ color: "#f4ff97" });
-      break;
+      return { color: "#f4ff97" };
     case "done":
-      this.setState({ color: "#979aff" });
-      break;
+      return { color: "#979aff" };
     }
-  };
-  componentWillMount(){
-    this.changeColor(this.props);
-  }
+    return {};
+  },
+  // componentWillMount(){
+  //   this.setState(this.getColor(this.props));
+  // }
   componentWillReceiveProps(nextProps){
-    this.changeColor(nextProps);
-  }
+    this.setState(this.getColor(nextProps));
+  },
   render() {
     return (
       <tr style={{backgroundColor: this.state.color}} key={this.props.id}>
@@ -39,9 +37,10 @@ export default class Task extends React.Component {
         </td>
       </tr>
     );
-  }
+  },
   handleUpdate(e){
     e.preventDefault();
     this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}});
-  };
-}
+  }
+});
+export default Task;
