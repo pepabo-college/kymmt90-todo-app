@@ -14,7 +14,7 @@ export default class Task extends React.Component {
       this.setState({ color: "#f4ff97" });
       break;
     case "done":
-      this.setState({ color: "#979aff" })
+      this.setState({ color: "#979aff" });
       break;
     }
   };
@@ -42,5 +42,6 @@ export default class Task extends React.Component {
   }
   handleUpdate(e){
     e.preventDefault();
-    this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
+    this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}});
+  };
 }
