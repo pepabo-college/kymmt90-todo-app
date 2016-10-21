@@ -3,7 +3,7 @@ lock '3.6.1'
 
 # config valid only for current version of Capistrano
 set :application, 'rails'
-set :repo_url, "https://github.com/pepabo-college/kymmt90-todo-app.git"
+set :repo_url, "https://#{ENV['GITTOKEN']}:x-oauth-basic@github.com/pepabo-college/kymmt90-todo-app.git"
 
 set :user, 'centos'
 set :branch, 'master'
