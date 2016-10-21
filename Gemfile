@@ -36,6 +36,10 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.5.0'
   gem 'rails-controller-testing'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
 
 group :development do
