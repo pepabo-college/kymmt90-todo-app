@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.3.1
+env:
+  - "NODE_VERSION=6.5.0"
 
 services:
   - postgresql
@@ -9,9 +11,15 @@ bundler_args: "--without development --deployment"
 
 cache: bundler
 
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $NODE_VERSION
+  - bundle install --deployment --path vendor/bundle
+
 before_script:
   - cp config/database.travis.yml config/database.yml
   - bundle exec rake db:setup
+  - source ~/.nvm/nvm.sh && npm install
 
 script:
   - bundle exec rspec
+  - source ~/.nvm/nvm.sh && npm run test

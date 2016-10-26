@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "browserify app/assets/javascripts/app.js -t babelify -o app/assets/javascripts/bundle.js -v",
     "watch": "watchify app/assets/javascripts/app.js -t babelify -o app/assets/javascripts/bundle.js -v --debug"
   },
@@ -15,8 +15,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-jest": "^16.0.0",
     "babel-preset-es2015": "^6.16.0",
     "babelify": "^7.3.0",
+    "enzyme": "^2.5.1",
+    "jest": "^16.0.1",
+    "react-addons-test-utils": "^15.3.2",
+    "react-test-renderer": "^15.3.2",
     "watchify": "^3.7.0"
   },
   "dependencies": {
