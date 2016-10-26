@@ -1,9 +1,32 @@
 import React from "react";
 
 export default class Task extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  };
+  changeColor(setProps){
+    switch (setProps.status) {
+    case "todo":
+      this.setState({ color: "#ff9797" });
+      break;
+    case "doing":
+      this.setState({ color: "#f4ff97" });
+      break;
+    case "done":
+      this.setState({ color: "#979aff" })
+      break;
+    }
+  };
+  componentWillMount(){
+    this.changeColor(this.props);
+  }
+  componentWillReceiveProps(nextProps){
+    this.changeColor(nextProps);
+  }
   render() {
     return (
-      <tr key={this.props.id}>
+      <tr style={{backgroundColor: this.state.color}} key={this.props.id}>
         <td>
           {this.props.content}
         </td>
@@ -17,7 +40,6 @@ export default class Task extends React.Component {
       </tr>
     );
   }
-
   handleUpdate(e){
     e.preventDefault();
     this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
