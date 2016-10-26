@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :tasks
+  resources :tasks do
+    put :sort
+  end
   root to: 'welcome#index'
 end

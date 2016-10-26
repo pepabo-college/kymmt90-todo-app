@@ -1,9 +1,32 @@
 import React from "react";
+import { DragDropContext, DropTarget, DragSource } from "react-dnd";
 
+@DropTarget('item', {
+  drop(dropProps, monitor, dropComponent) {
+    let dragProps = monitor.getItem();
+    if (dropProps.id !== dragProps.id) {
+      dragProps.onDrop(dragProps.id, dropProps.id);
+    }
+  },
+}, (connect) => {
+  return {
+    connectDropTarget: connect.dropTarget(),
+  }
+})
+@DragSource('item', {
+  beginDrag(props) {
+    return props
+  }
+}, (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+})
 export default class Task extends React.Component {
   render() {
-    return (
-      <tr key={this.props.id}>
+    return this.props.connectDragSource(this.props.connectDropTarget(
+        <tr key={this.props.id} className="item" data-model_name="Task" data-update_url={"tasks/" + this.props.id + "/sort"}>
         <td>
           {this.props.content}
         </td>
@@ -15,7 +38,7 @@ export default class Task extends React.Component {
           </select>
         </td>
       </tr>
-    );
+    ));
   }
 
   handleUpdate(e){
