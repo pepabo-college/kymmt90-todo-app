@@ -62,7 +62,7 @@ export default class TaskApp extends React.Component {
               <th colSpan="3"></th>
             </tr>
           </thead>
-          <TaskList data={this.state.data} onTaskUpdate={this.taskUpdate.bind(this)} />
+          <TaskList data={this.state.data} onTaskUpdate={this.taskUpdate.bind(this)} onTaskDestroy={this.taskDestroy.bind(this)} />
         </table>
       </div>
     );
@@ -81,6 +81,20 @@ export default class TaskApp extends React.Component {
           var updated_task_index = tasks.findIndex((t) => t.id === task.task.id);
           tasks[updated_task_index] = res.body;
           this.setState({data: tasks});
+        }
+      });
+  }
+
+  taskDestroy(id) {
+    request
+      .del(this.props.url + '/' + id)
+      .accept('application/json')
+      .end((err, res) => {
+        if (err || !res.ok){
+          console.error(this.props.url, status, err.toString());
+        } else {
+          var remaining_tasks = this.state.data.filter((t) => t.id !== id);
+          this.setState(remaining_tasks);
         }
       });
   }

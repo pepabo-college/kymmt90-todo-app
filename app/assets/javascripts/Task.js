@@ -14,6 +14,9 @@ export default class Task extends React.Component {
             <option value="done" key="done">done</option>
           </select>
         </td>
+        <td>
+          <input className="btn btn-danger" type="submit" value="削除" onClick={this.handleDestroy.bind(this)} />
+        </td>
       </tr>
     );
   }
@@ -21,4 +24,9 @@ export default class Task extends React.Component {
   handleUpdate(e){
     e.preventDefault();
     this.props.onTaskUpdate({task: {id: this.props.id, status: e.target.value}})};
+
+  handleDestroy(e) {
+    e.preventDefault();
+    this.props.onTaskDestroy(this.props.id);
+  }
 }
