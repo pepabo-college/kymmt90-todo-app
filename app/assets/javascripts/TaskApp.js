@@ -59,6 +59,7 @@ export default class TaskApp extends React.Component {
             <tr>
               <th>Content</th>
               <th>Status</th>
+              <th>Memo</th>
               <th colSpan="3"></th>
             </tr>
           </thead>
